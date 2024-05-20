@@ -1,4 +1,4 @@
-# Astral
+# Silly Bot
 ### Currently still a work in progress. 
 ## Starteds March 6
 
