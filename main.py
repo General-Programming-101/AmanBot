@@ -14,12 +14,11 @@ from discord.ext import commands, tasks
 from discord.ext.commands import has_permissions, CheckFailure
 from itertools import cycle
 
-bot = commands.Bot(command_prefix="aman!", intents=discord.Intents.all(), description=DESCRIPTION, help_command=None)
+bot = commands.Bot(command_prefix="seb ", intents=discord.Intents.all(), description=DESCRIPTION, help_command=None)
 
 load_dotenv("token.env")
 
 TOKEN = os.getenv("TOKEN")
-print(TOKEN)
 ids = set()
 
 @bot.event
@@ -40,6 +39,9 @@ async def on_message(message):
 async def ping(ctx):
     await ctx.send("Pong!")
 
+@bot.command()
+async def habibi(ctx):
+    await ctx.send(random.choice(RANDOM_HALAL))
 
 """
     Bot Run
