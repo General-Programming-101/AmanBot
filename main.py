@@ -19,6 +19,7 @@ bot = commands.Bot(command_prefix="aman!", intents=discord.Intents.all(), descri
 load_dotenv("token.env")
 
 TOKEN = os.getenv("TOKEN")
+print(TOKEN)
 ids = set()
 
 @bot.event
