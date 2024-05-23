@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-    Made by Smoodeazy, RJ, 2023
-    Feel free to edit the code as much as you like
+    Aman Bot
 """
 
 import sys, asyncio, functools, itertools, math, random, os, discord, aiohttp, io, json, pickle, string, random
 
 from config import *
+from cogs.admin import *
 from dotenv import load_dotenv, find_dotenv
 from itertools import cycle
 from async_timeout import timeout
@@ -23,6 +23,9 @@ ids = set()
 
 @bot.event
 async def on_ready():
+
+    # await bot.add_cog(Admin(bot))
+
     print(START_UP)
 
 @bot.event
