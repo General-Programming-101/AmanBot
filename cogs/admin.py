@@ -34,8 +34,12 @@ class Admin(commands.Cog):
     async def help(self, ctx):
         embeds = []
 
-        embeds.append(AdminEmbedGenerator())
-        
+        # embeds.append(EmbedGenerator())
+
+        allEmbeds = ReturnEmbed()
+
+        for v in allEmbeds.values():
+            embeds.append(v)
 
         paginator = pg.Paginator(bot, embeds, ctx)
         # paginator.default_pagination()

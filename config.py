@@ -27,7 +27,12 @@ RANDOM_HALAL: list = [
 """
 
 ADMIN_COMS: dict = {
-    "help" : "Self explanatory - Sample use `seb help`"
+    "help" : "Self explanatory - Sample use ```seb help```",
+    "Kick" : "Self explanatory - Sample use ```seb kick @user```",
+}
+
+FUN_COMS: dict = {
+    "Kiss" : "Kiss a user - Sample use ```seb kiss @user```"
 }
 
 """
@@ -37,13 +42,26 @@ ADMIN_COMS: dict = {
     If you're going to edit these, let me know first
 """
 
-def AdminEmbedGenerator():
+OUTPUT_COMS: dict = {
+    "Admin Commands" : ADMIN_COMS,
+    "Fun Commands" : FUN_COMS,
+}
+
+def EmbedGenerator(nameDict, embedDict): #### Returns a Discord Embed
     embed = discord.Embed(
-        title="Admin Commands",
-        description="Admin commands"
+        title = f"{nameDict}",
+        # description="Admin commands"
     )
     
-    for k, v in ADMIN_COMS.items():
-        embed.add_field(name=k, value=v, inline=False)
+    # for k, v in embedDict.items():
+    [embed.add_field(name=k, value=v, inline=False) for k, v in embedDict.items()]
 
     return embed
+
+def ReturnEmbed():
+    output = {}
+
+    for k, v in OUTPUT_COMS.items():
+        output[k] = EmbedGenerator(k, v)
+
+    return output
