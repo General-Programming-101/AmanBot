@@ -5,8 +5,11 @@
 
 import sys, asyncio, functools, itertools, math, random, os, discord, aiohttp, io, json, pickle, string, random
 
+##### Configuration and Cogs
 from config import *
 from cogs.admin import *
+from cogs.fun import *
+
 from dotenv import load_dotenv, find_dotenv
 from itertools import cycle
 from async_timeout import timeout
@@ -25,6 +28,7 @@ ids = set()
 async def on_ready():
 
     await bot.add_cog(Admin(bot))
+    await bot.add_cog(Fun(bot))
 
     print(START_UP)
 

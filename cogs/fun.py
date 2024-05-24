@@ -25,11 +25,11 @@ class Fun(commands.Cog):
     async def kiss(self, ctx, arg=""):
 
         if arg == "":
-            await ctx.send("You can't kiss yourself, degenerate")
+            await ctx.send("You can't kiss yourself, degenerate. Well... go on choose someone")
         
         else:
             embed = discord.Embed(
-                title="{} kisses {}".format(ctx.author.mention, arg)
+                description="{} kisses {}".format(ctx.author.mention, arg)
             )
-            embed.set_image(random.choice(KISS_GIFS))
-        await ctx.send("Cogs working")
+            embed.set_image(url=random.choice(KISS_GIFS))
+            await ctx.send(embed=embed)
