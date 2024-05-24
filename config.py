@@ -17,6 +17,11 @@ RANDOM_HALAL: list = [
 ]
 
 
+################################# FUN COMMAND CONFIG #################################
+with open("gifs/kissGifs.txt", "r") as f:
+    kiss = f.readlines()
+
+KISS_GIFS: list = [s.strip() for s in kiss]
 ################################# HELP COMMAND CONFIG #################################
  
 """
