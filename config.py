@@ -1,9 +1,9 @@
 """
     Important imports
 """
-import discord
-import random
-import datetime
+import discord, random, datetime, sys, os
+
+sys.path.append(os.path.abspath(os.path.join('..', 'gifs')))
 
 """
     Basic String Configurations
@@ -56,6 +56,57 @@ def gifEmbedGenerator(title, desc, gif, mes):
     embed.set_image(url=gif)
 
     return embed
+
+#### NOTE TarotCard Embed Generator
+
+# TAROT_IMAGES: dict = {
+#     "The Fool": "fool.jpg",
+#     "The Magician": "magician.jpg",
+#     "The High Priestess": "highpriestess.jpg",
+    
+# }
+
+def TarotEmbed(card, cardDesc, cardNo):
+    title = ""
+
+    side = random.randint(0, 1)
+    imageName = cardDesc[2]
+
+    print(side)
+
+    if side == 1:
+        title = "**__Reverse__ **" + title
+        cardDesc = cardDesc[1]
+    
+    else:
+        cardDesc = cardDesc[0]
+
+    whichCard = {
+        1: "Past",
+        2: "Present",
+        3: "Future"
+    }
+
+    whichColor = {
+        1: 0x000000,
+        2: 0x808080,
+        3: 0xFFFFFF
+    }
+
+    embed = discord.Embed(
+        title = "{}".format(whichCard[int(cardNo)]),
+        description = title + card,
+        color = whichColor[int(cardNo)]
+    )
+
+    file = discord.File("images/tarot/{}".format(imageName), filename="{}".format(imageName))
+    embed.set_thumbnail(url="attachment://{}".format(imageName))
+
+    embed.add_field(name=f"Here are the values associated with this card", value=f"{cardDesc}")
+
+    embed.set_footer(text="Note: Reverse cards mean the opposite! This generally isn't a good thing...")
+
+    return [file, embed]
 
 ################################# HELP COMMAND CONFIG #################################
  

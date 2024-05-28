@@ -17,6 +17,9 @@ from discord.ext import commands, tasks
 from discord.ext.commands import has_permissions, CheckFailure
 from itertools import cycle
 
+##### Tarot Card Reading
+# from import tarot
+
 bot = commands.Bot(command_prefix="seb ", intents=discord.Intents.all(), description=DESCRIPTION, help_command=None)
 
 load_dotenv("token.env")

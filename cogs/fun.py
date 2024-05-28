@@ -13,6 +13,9 @@ from discord.ext import commands, tasks
 from discord.ext.commands import has_permissions, CheckFailure
 from itertools import cycle
 
+#### Tarot Card Reading
+from libraries.tarot import *
+
 #### Paginator
 import button_paginator as pg
 bot = commands.Bot(command_prefix="seb ", intents=discord.Intents.all(), description=DESCRIPTION, help_command=None)
@@ -38,3 +41,35 @@ class Fun(commands.Cog):
                 random.choice(KISS_GIFS),
                 random.choice(LOVE_MESSAGE)
                 ))
+            
+    @commands.command()
+    async def tarot(self, ctx):
+
+        output = []
+        i = 1
+
+        tarot = Tarot() #### Return a list, with lists
+
+        contents = tarot.getHand()
+        print(contents)
+
+        for k, v in contents.items():
+            # output.append(TarotEmbed(k, v, i))
+            outputEmbed = TarotEmbed(k, v, i)
+
+            await ctx.send(file=outputEmbed[0], embed=outputEmbed[1])
+            i = i + 1
+
+        print(output)
+
+        # for e in output:
+        #     await ctx.send(embed=e)
+
+        randomFooterMessage = [
+            "***Is this your destiny?***",
+            "I wonder what this means?",
+            "Not happy with your reading? Run it again!",
+            "I think your future is doomed"
+        ]
+
+        await ctx.send(random.choice(randomFooterMessage))
