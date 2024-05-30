@@ -32,20 +32,21 @@ class Admin(commands.Cog):
         await ctx.send("Cogs working")
 
     @commands.command()
-    async def help(self, ctx):
-        embeds = []
+    async def help(self, ctx, *, message=""):
 
-        # embeds.append(EmbedGenerator())
+        print(message.lower())
 
-        allEmbeds = ReturnEmbed()
 
-        for v in allEmbeds.values():
-            embeds.append(v)
+        if message == "":
+            await ctx.send(embed=ReturnMainHelp())
 
-        paginator = pg.Paginator(bot, embeds, ctx)
-        # paginator.default_pagination()
-        paginator.add_button("prev", emoji = "◀")
-        paginator.add_button("goto")
-        paginator.add_button("next", emoji = "▶")
-        await paginator.start()
-        
+        else:
+            if message in AVAILABLE_CATEGORIES: #### If it is a valid category
+                await ctx.send(embed=HelpCategoryGenerator(message))
+
+            elif message.lower() in ALL_COMMANDS.keys():
+                await ctx.send(embed=CommandHelpGenerator(message, ALL_COMMANDS[message.lower()]))
+
+            else:
+                await ctx.send("I don't think that command exists yet")
+

@@ -59,13 +59,6 @@ def gifEmbedGenerator(title, desc, gif, mes):
 
 #### NOTE TarotCard Embed Generator
 
-# TAROT_IMAGES: dict = {
-#     "The Fool": "fool.jpg",
-#     "The Magician": "magician.jpg",
-#     "The High Priestess": "highpriestess.jpg",
-    
-# }
-
 def TarotEmbed(card, cardDesc, cardNo):
     title = ""
 
@@ -117,14 +110,37 @@ def TarotEmbed(card, cardDesc, cardNo):
     I've already made sure that the help command will run properly, just edit it here
 """
 
+AVAILABLE_CATEGORIES: list = [
+    "fun",
+    "admin"
+]
+
 ADMIN_COMS: dict = {
     "help" : "Self explanatory - Sample use ```seb help```",
     "Kick" : "Self explanatory - Sample use ```seb kick @user```",
 }
 
 FUN_COMS: dict = {
-    "Kiss" : "Kiss a user - Sample use ```seb kiss @user```"
+    "Kiss" : "Kiss a user - Sample use ```seb kiss @user```",
+    "Tarot" : "Returns a Tarot card reading (Major Arcana) - Sample use ```seb tarot```",
 }
+
+ALL_COMMANDS: dict = {
+    ##### ADMIN COMMANDS
+    "help" : "Self explanatory - Sample use ```seb help```",
+    "kick" : "Self explanatory - Sample use ```seb kick @user```",
+
+    ##### FUN COMMANDS
+    "kiss" : "Kiss a user - Sample use ```seb kiss @user```",
+    "tarot" : "Returns a Tarot card reading (Major Arcana) - Sample use ```seb tarot```",
+}
+
+RANDOM_FOOTER: list = [
+    "Try other commands!",
+    "G'day to you sire",
+    "Wuthering waves > Genshit",
+    "Don't watch **My Happy Sugar Life**"
+]
 
 """
     Help Command Embed Generator
@@ -138,14 +154,56 @@ OUTPUT_COMS: dict = {
     "Fun Commands" : FUN_COMS,
 }
 
+def CommandHelpGenerator(cName, cDescription):
+
+    embed = discord.Embed(
+        title = "{} command".format(cName.capitalize()),
+        description = cDescription
+    )
+
+    embed.set_footer(text=random.choice(RANDOM_FOOTER))
+
+    return embed
+
+def HelpCategoryGenerator(cName):
+    
+    if cName.lower() == "fun":
+        embed = discord.Embed(
+            title = "List of Fun Commands",
+            description = "\n\n"
+        )
+
+        [embed.add_field(name=k, value=v, inline=False) for k, v in FUN_COMS.items()]
+
+    elif cName.lower() == "admin":
+        embed = discord.Embed(
+            title = "List of Admin Commands",
+            description = "\n\n"
+        )
+
+        [embed.add_field(name=k, value=v, inline=False) for k, v in ADMIN_COMS.items()]
+
+    return embed
+
 def EmbedGenerator(nameDict, embedDict): #### Returns a Discord Embed
     embed = discord.Embed(
         title = f"{nameDict}",
-        # description="Admin commands"
     )
     
-    # for k, v in embedDict.items():
     [embed.add_field(name=k, value=v, inline=False) for k, v in embedDict.items()]
+
+    return embed
+
+def ReturnMainHelp():
+    embed = discord.Embed(
+        title = "Welcome to the Sebastian Bot Manual!",
+        description = "\nTo see a list of commands, directly access a page\n\nTry `seb help fun`\n\nOr you can access a command for more info\n\nTry `seb help tarot`\n\nBelow are the available commands\n"
+    )
+
+    embed.add_field(name="Fun", value="For laughs and giggles", inline=False)
+    embed.add_field(name="Admin", value="Moderation", inline=False)
+
+    embed.set_thumbnail(url="https://pbs.twimg.com/media/DAB0513WAAAIQpd.png")
 
     return embed
 
