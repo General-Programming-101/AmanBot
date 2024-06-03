@@ -9,6 +9,7 @@ import sys, asyncio, functools, itertools, math, random, os, discord, aiohttp, i
 from config import *
 from cogs.admin import *
 from cogs.fun import *
+from cogs.gacha import *
 
 from dotenv import load_dotenv, find_dotenv
 from itertools import cycle
@@ -32,6 +33,7 @@ async def on_ready():
 
     await bot.add_cog(Admin(bot))
     await bot.add_cog(Fun(bot))
+    await bot.add_cog(Gacha(bot))
 
     print(START_UP)
 
