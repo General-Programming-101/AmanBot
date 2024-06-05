@@ -49,4 +49,3 @@ class Admin(commands.Cog):
 
             else:
                 await ctx.send("I don't think that command exists yet")
-
