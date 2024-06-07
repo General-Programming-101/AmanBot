@@ -31,10 +31,6 @@ class Fun(commands.Cog):
             await ctx.send("You can't kiss yourself you degenerate. Well go on don't be shy, choose someone")
         
         else:
-            # embed = discord.Embed(
-            #     description="{} kisses {}".format(ctx.author.mention, arg)
-            # )
-            # embed.set_image(url=random.choice(KISS_GIFS))
             await ctx.send(embed=gifEmbedGenerator(
                 None, 
                 "{} kisses {}".format(ctx.author.mention, arg),
