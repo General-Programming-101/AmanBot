@@ -1,5 +1,5 @@
 aiohttp==3.8.5
 async_timeout==4.0.3
-button_paginator==1.0.10
+git+https://github.com/andrewthederp/Button_paginator
 discord.py==2.3.2
 python-dotenv==1.0.1
