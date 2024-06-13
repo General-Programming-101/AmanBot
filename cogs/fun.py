@@ -48,7 +48,6 @@ class Fun(commands.Cog):
         tarot = Tarot() #### Return a list, with lists
 
         contents = tarot.getHand()
-        print(contents)
 
         for k, v in contents.items():
             outputEmbed = TarotEmbed(k, v, i)
