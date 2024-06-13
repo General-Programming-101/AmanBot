@@ -4,19 +4,13 @@
 
 """
 
-
-import sys, asyncio, functools, itertools, math, random, os, discord, aiohttp, io, json, pickle, string, random
+import random, os, discord
 from config import *
-from dotenv import load_dotenv, find_dotenv
-from itertools import cycle
-from async_timeout import timeout
-from discord.ext import commands, tasks
-from discord.ext.commands import has_permissions, CheckFailure
-from itertools import cycle
+from discord.ext import commands
 
 ##### Gacha Config
-from gachagacha.banners import *
-from gachagacha.wishing import *
+from gachaconfig.banners import *
+from gachaconfig.wishing import *
 
 from os.path import exists
 
