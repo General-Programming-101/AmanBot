@@ -50,16 +50,12 @@ class Fun(commands.Cog):
         print(contents)
 
         for k, v in contents.items():
-            # output.append(TarotEmbed(k, v, i))
             outputEmbed = TarotEmbed(k, v, i)
 
             await ctx.send(file=outputEmbed[0], embed=outputEmbed[1])
             i = i + 1
 
         print(output)
-
-        # for e in output:
-        #     await ctx.send(embed=e)
 
         randomFooterMessage = [
             "***Is this your destiny?***",

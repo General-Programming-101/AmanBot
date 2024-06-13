@@ -4,7 +4,11 @@
 """
 
 import sys, asyncio, functools, itertools, math, random, os, discord, aiohttp, io, json, pickle, string, random
+import os
 
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), 'cogs')))
+# print(sys.path)  # To verify the path has been added
+    
 ##### Configuration and Cogs
 from config import *
 from cogs.admin import *
