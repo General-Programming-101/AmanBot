@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import sys, random, discord
-from gachagacha.banners import *
+from gachaconfig.banners import *
 
 """
 Basic Wishing Functions
