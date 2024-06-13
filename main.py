@@ -3,7 +3,7 @@
     Aman Bot
 """
 
-import sys, asyncio, functools, itertools, math, random, os, discord, aiohttp, io, json, pickle, string, random
+import sys, os, discord
 
 ##### Configuration and Cogs
 from config import *
@@ -11,14 +11,7 @@ from cogs.admin import *
 from cogs.fun import *
 
 from dotenv import load_dotenv, find_dotenv
-from itertools import cycle
-from async_timeout import timeout
-from discord.ext import commands, tasks
-from discord.ext.commands import has_permissions, CheckFailure
-from itertools import cycle
-
-##### Tarot Card Reading
-# from import tarot
+from discord.ext import commands
 
 bot = commands.Bot(command_prefix="seb ", intents=discord.Intents.all(), description=DESCRIPTION, help_command=None)
 
@@ -38,20 +31,7 @@ async def on_ready():
 @bot.event
 async def on_message(message):
     print(f"{message.guild}/{message.channel}/{message.author.name}> Message: {message.content}")
-
     await bot.process_commands(message)
-
-"""
-    Basic Commands
-"""
-
-@bot.command()
-async def ping(ctx):
-    await ctx.send("Pong!")
-
-@bot.command()
-async def habibi(ctx):
-    await ctx.send(random.choice(RANDOM_HALAL))
 
 """
     Bot Run
