@@ -1,1 +1,1 @@
-Pity:0.Count4Star:0.Guarantee:false.EventGuarantee:true
+Pity:0.Count4Star:7.Guarantee:true.EventGuarantee:true
