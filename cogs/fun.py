@@ -31,10 +31,6 @@ class Fun(commands.Cog):
             await ctx.send("You can't kiss yourself you degenerate. Well go on don't be shy, choose someone")
         
         else:
-            # embed = discord.Embed(
-            #     description="{} kisses {}".format(ctx.author.mention, arg)
-            # )
-            # embed.set_image(url=random.choice(KISS_GIFS))
             await ctx.send(embed=gifEmbedGenerator(
                 None, 
                 "{} kisses {}".format(ctx.author.mention, arg),
@@ -54,16 +50,12 @@ class Fun(commands.Cog):
         print(contents)
 
         for k, v in contents.items():
-            # output.append(TarotEmbed(k, v, i))
             outputEmbed = TarotEmbed(k, v, i)
 
             await ctx.send(file=outputEmbed[0], embed=outputEmbed[1])
             i = i + 1
 
         print(output)
-
-        # for e in output:
-        #     await ctx.send(embed=e)
 
         randomFooterMessage = [
             "***Is this your destiny?***",
