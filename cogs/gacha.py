@@ -5,6 +5,7 @@
 """
 
 import random, os, discord
+from time import sleep
 from config import *
 from discord.ext import commands
 
@@ -89,15 +90,14 @@ def workWithPlayer(banner, server, author): #### No output
 
             if fiftyFifty == 0 and eventguarantee != "true":
                 eventguarantee = "true"
+    
+    print(pity)
 
     ##### Wish First
 
-    output = decideWish(banner, fourStar, guarantee, eventguarantee)
+    output = decideWish(banner, fourStar, guarantee, eventguarantee, pity)
 
-    print("This here lies the output output" + output)
     outputOutput = output.split("/")
-
-    print(outputOutput)
 
     if len(outputOutput[0]) == 3: ### If it's a 3 star
         pity = pity + 1
@@ -111,7 +111,8 @@ def workWithPlayer(banner, server, author): #### No output
         pity = 0
     
     elif len(outputOutput[0]) == 4: ### If 5 star
-        fourStar = 0 
+        fourStar = 0
+        pity = pity + 1
 
     contents = []
 
@@ -124,13 +125,20 @@ def workWithPlayer(banner, server, author): #### No output
         f.write(".".join(contents))
 
         f.close()
-    return outputWish(output)
+    
+    print(output)
+    outputResult = outputWish(output)
+
+    if len(outputResult) == 2:
+        return [1, outputResult]
+
+    return outputResult
 
 class Gacha(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
-        with open("gachagacha/currentBanner.txt", "r") as f:
+        with open("gachaconfig/currentBanner.txt", "r") as f:
             self.banner = f.readlines()
             f.close()
 
@@ -172,7 +180,19 @@ class Gacha(commands.Cog):
             details = workWithPlayer(self.banner, ctx.message.guild.id, ctx.author)
                     #### Output: [pity, fourStar, guarantee, eventguarantee]
 
-            await ctx.send(embed=details)
+            if len(details) == 2:
+                embed = discord.Embed()
+                embed.set_image(url="https://upload-os-bbs.hoyolab.com/upload/2024/02/05/114697594/6ca19d66f5b632f46790565d90addcd3_6995038802610358288.gif")
+
+                msg = await ctx.send(embed=embed)
+
+                print(details)
+                sleep(5)
+
+
+                await msg.edit(embed=details[1][1])
+            else:
+                await ctx.send(embed=details)
 
     @commands.command(aliases=["w"])
     async def wish(self, ctx):
@@ -188,4 +208,17 @@ class Gacha(commands.Cog):
                             ### access a range of commands that I have created
 
         details = workWithPlayer(self.banner, ctx.message.guild.id, ctx.author)
-        await ctx.send(embed=details)
+
+        if len(details) == 2:
+            embed = discord.Embed()
+            embed.set_image(url="https://upload-os-bbs.hoyolab.com/upload/2024/02/05/114697594/6ca19d66f5b632f46790565d90addcd3_6995038802610358288.gif")
+
+            msg = await ctx.send(embed=embed)
+
+            sleep(5)
+
+            print(details)
+
+            await msg.edit(embed=details[1][1])
+        else:
+            await ctx.send(embed=details)

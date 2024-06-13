@@ -2,6 +2,8 @@
 
 import sys, random, discord
 from gachaconfig.banners import *
+from discord import *
+
 
 """
 Basic Wishing Functions
@@ -37,13 +39,16 @@ def outputWish(result):
             description = result.split("/")[1]
         )
 
+        if len(stars) == 5:
+            return [1, embed]
+
         return embed
 
-def decideWish(banner, fourStar, guarantee, eventGuarantee):
+def decideWish(banner, fourStar, guarantee, eventGuarantee, pity):
     results = Wishing() ### Creating a wishing object, best way to 
                     ### access a range of commands that I have created
     
-    result = results.wish(banner, fourStar, guarantee, eventGuarantee)
+    result = results.wish(banner, fourStar, guarantee, eventGuarantee, pity)
     # def wish(self, name, pity, pityStatus, tenCount):
     stars = result.split()[0]
     
@@ -62,13 +67,13 @@ def decideWish(banner, fourStar, guarantee, eventGuarantee):
 """
 End of wishing functions
 """
-class Wishing(object):
+class Wishing():
 
     def __init__(self):
         self.upTo = 29
         self.whatpity = "false"
     
-    def wish(self, name, fourStar, guarantee, eventGuarantee):
+    def wish(self, name, fourStar, guarantee, eventGuarantee, pity):
         name = name[0]
         # esults.wish(banner, fourStar, guarantee, eventGuarantee)
         number = random.randint(1, 500)
@@ -89,14 +94,14 @@ class Wishing(object):
                 else:
                     result = "****/" + random.choice(standard4Star)
         
-        elif eventGuarantee == "true":
-            result = "****/" + name
+        elif eventGuarantee == "true" and pity == 89:
+            result = "*****/" + name
         
-        elif guarantee == "true":
+        elif guarantee == "true" and pity == 90:
             fifty50 = random.choice([0, 1])
 
             if fifty50 == 0:
-                result = "****/" + name
+                result = "*****/" + name
             else:
                 result = "*****/" + random.choice(standard5Star)
         
