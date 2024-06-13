@@ -4,14 +4,18 @@
 """
 
 import sys, os, discord
+import os
 
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), 'cogs')))
+# print(sys.path)  # To verify the path has been added
+    
 ##### Configuration and Cogs
 from config import *
 from cogs.admin import *
 from cogs.fun import *
+from cogs.gacha import *
 
 from dotenv import load_dotenv, find_dotenv
-from discord.ext import commands
 
 bot = commands.Bot(command_prefix="seb ", intents=discord.Intents.all(), description=DESCRIPTION, help_command=None)
 
@@ -25,6 +29,7 @@ async def on_ready():
 
     await bot.add_cog(Admin(bot))
     await bot.add_cog(Fun(bot))
+    await bot.add_cog(Gacha(bot))
 
     print(START_UP)
 

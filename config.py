@@ -111,6 +111,15 @@ def GifEmbedGenerator(title, desc, gif, mes):
 
     return embed
 
+#### NOTE Gacha Config
+
+startPlayer = [
+    "Pity",
+    "Count4Star",
+    "Guarantee",
+    "EventGuarantee"
+]
+
 #### NOTE TarotCard Embed Generator
 
 def TarotEmbed(card, cardDesc, cardNo):
