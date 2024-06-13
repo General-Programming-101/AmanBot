@@ -20,11 +20,6 @@ RANDOM_HALAL: list = [
     "Kes omak ya khara"
 ]
 
-################################# FUN COMMAND CONFIG #################################
-with open("gifs/kissGifs.txt", "r") as f:
-    kiss = f.readlines()
-
-KISS_GIFS: list = [s.strip() for s in kiss]
 ################################# HELP COMMAND CONFIG #################################
  
 """
@@ -58,10 +53,8 @@ OUTPUT_COMS: dict = {
 def EmbedGenerator(nameDict, embedDict): #### Returns a Discord Embed
     embed = discord.Embed(
         title = f"{nameDict}",
-        # description="Admin commands"
     )
-    
-    # for k, v in embedDict.items():
+
     [embed.add_field(name=k, value=v, inline=False) for k, v in embedDict.items()]
 
     return embed
@@ -100,7 +93,7 @@ with open("gifs/kissGifs.txt", "r") as f:
 
 KISS_GIFS: list = [s.strip() for s in kiss]
 
-def gifEmbedGenerator(title, desc, gif, mes):
+def GifEmbedGenerator(title, desc, gif, mes):
     title = title
     desc = desc
     gif = gif
@@ -171,6 +164,13 @@ def TarotEmbed(card, cardDesc, cardNo):
 
     return [file, embed]
 
+RANDOM_FOOTER_MESSAGE = [
+    "***Is this your destiny?***",
+    "I wonder what this means?",
+    "Not happy with your reading? Run it again!",
+    "I think your future is doomed"
+]
+        
 ################################# HELP COMMAND CONFIG #################################
  
 """

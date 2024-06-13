@@ -61,22 +61,6 @@ def workWithPlayer(banner, server, author): #### No output
     try: #### Try to see if the file exists
         f = open(f"servers/{server}/{author}data.txt")
 
-        # print("Trying to read something!")
-        # data = "".join(f.readlines()).split(".")
-
-        # print(data)
-        # pity = data[1].split(":")[1]
-        # # print(pity)
-
-        # data.pop()
-
-        # data.append("Pity:" + str(int(pity) + 1))
-
-        # with open(f"servers/{server}/{author}data.txt", "w") as f:
-        #     f.write(".".join(data))
-
-        #     f.close()
-
     except FileNotFoundError:
         with open(f"servers/{server}/{author}data.txt", "w") as f:
             content = []
@@ -90,7 +74,6 @@ def workWithPlayer(banner, server, author): #### No output
             f.close()
 
     ##### NOTE IMPORTANT USER DATA
-
     ###### Deal with the player data
     
     with open(f"servers/{server}/{author}data.txt", "r") as f:
@@ -104,10 +87,6 @@ def workWithPlayer(banner, server, author): #### No output
         guarantee = details[2].split(":")[1]
         eventguarantee = details[3].split(":")[1]
 
-        # print(pity)
-        # print(fourStar)
-        # print(guarantee)
-
         if pity == 90: ## Guarantee a 5 star
             eventguarantee = "false"
             guarantee = "true"
@@ -116,7 +95,6 @@ def workWithPlayer(banner, server, author): #### No output
 
             if fiftyFifty == 0 and eventguarantee != "true":
                 eventguarantee = "true"
-
 
     ##### Wish First
 
@@ -152,9 +130,6 @@ def workWithPlayer(banner, server, author): #### No output
         f.write(".".join(contents))
 
         f.close()
-
-    # return [pity, fourStar, guarantee, eventguarantee]
-
     return outputWish(output)
 
 class Gacha(commands.Cog):
@@ -200,14 +175,9 @@ class Gacha(commands.Cog):
             results = Wishing() ### Creating a wishing object, best way to 
                                 ### access a range of commands that I have created
 
-            # output = decideWish(self.banner)
-
             details = workWithPlayer(self.banner, ctx.message.guild.id, ctx.author)
                     #### Output: [pity, fourStar, guarantee, eventguarantee]
 
-            # if len(output) == 2:
-            #     await ctx.send(file=output[0], embed=output[1])
-            # else:
             await ctx.send(embed=details)
 
     @commands.command(aliases=["w"])
@@ -223,15 +193,5 @@ class Gacha(commands.Cog):
         results = Wishing() ### Creating a wishing object, best way to 
                             ### access a range of commands that I have created
 
-        # output = decideWish(self.banner)
-
         details = workWithPlayer(self.banner, ctx.message.guild.id, ctx.author)
-                #### Output: [pity, fourStar, guarantee, eventguarantee]
-
-        # if len(output) == 2:
-        #     await ctx.send(file=output[0], embed=output[1])
-        # else:
         await ctx.send(embed=details)
-
-    # @commands.command()
-    # async def banner(self, ctx):
