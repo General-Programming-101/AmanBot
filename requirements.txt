@@ -3,3 +3,6 @@ async_timeout==4.0.3
 git+https://github.com/andrewthederp/Button_paginator
 discord.py==2.3.2
 python-dotenv==1.0.1
+discord.py==2.3.2
+youtube-search-python==1.6.6
+yt-dlp==2024.5.27
