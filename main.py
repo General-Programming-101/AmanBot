@@ -13,6 +13,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), 'cogs
 from config import *
 from admin import Admin
 from fun import Fun
+from music import Music
 
 from dotenv import load_dotenv, find_dotenv
 from itertools import cycle
@@ -36,6 +37,7 @@ async def on_ready():
 
     await bot.add_cog(Admin(bot))
     await bot.add_cog(Fun(bot))
+    await bot.add_cog(Music(bot))
 
     print(START_UP)
 
