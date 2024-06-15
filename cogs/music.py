@@ -3,6 +3,9 @@ from discord.ext import commands
 from youtubesearchpython import VideosSearch
 from yt_dlp import YoutubeDL
 import asyncio
+
+# Sourced from https://github.com/pawel02/music_bot/blob/main/music_cog.py
+
 class Music(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
