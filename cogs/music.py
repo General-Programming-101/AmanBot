@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 from youtubesearchpython import VideosSearch
 from yt_dlp import YoutubeDL
-
+import asyncio
 class Music(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -38,7 +38,7 @@ class Music(commands.Cog):
             print(f"Playing next: {m_url}")
 
             self.music_queue.pop(0)
-            loop = asyncio.get_event_loop()
+            loop = get_event_loop()
             try:
                 data = await loop.run_in_executor(None, lambda: self.ytdl.extract_info(m_url, download=False))
                 song = data['url']
