@@ -91,7 +91,15 @@ LOVE_MESSAGE: list = [
 with open("gifs/kissGifs.txt", "r") as f:
     kiss = f.readlines()
 
+f.close()
 KISS_GIFS: list = [s.strip() for s in kiss]
+
+with open("gifs/hugGifs.txt", "r") as f:
+    hug = f.readlines()
+
+f.close()
+HUG_GIFS: list = [s.strip() for s in hug]
+
 
 def GifEmbedGenerator(title, desc, gif, mes):
     title = title
