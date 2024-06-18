@@ -1,5 +1,5 @@
 """
-    Tarot Card Stuff
+    Tarot Card Configuration
 """
 import random
 
@@ -28,9 +28,6 @@ TAROT_CARD_CONFIG: dict = {
     "The World" : ["Success, achievement", "Lack of success, stagnation, burden", "world.jpg"]
 }
 
-# print(len(TAROT_CARD_CONFIG))
-# print(list(TAROT_CARD_CONFIG.keys()))
-
 class Tarot:
 
     def __init__(self):
@@ -46,9 +43,6 @@ class Tarot:
                 randNum = random.randint(0, 3)
             
             found.append(randNum)
-            #### Get our values
-
-            # randNum = 0
 
             cardTitle = list(TAROT_CARD_CONFIG.keys())[randNum]
 
@@ -59,10 +53,4 @@ class Tarot:
         if not self.hand:
             self.createHand()
 
-        # print(self.hand)
-
         return self.hand
-
-    # def __str__(self):
-
-        # return START_UP
