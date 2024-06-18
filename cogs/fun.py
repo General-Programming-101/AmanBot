@@ -30,12 +30,26 @@ class Fun(commands.Cog):
 
         if arg == "" or arg == ctx.author.mention:
             await ctx.send("You can't kiss yourself you degenerate. Well go on don't be shy, choose someone")
-        
         else:
             await ctx.send(embed=GifEmbedGenerator(
                 None, 
                 "{} kisses {}".format(ctx.author.mention, arg),
                     random.choice(KISS_GIFS),
+                    random.choice(LOVE_MESSAGE)
+                ))
+
+
+    @commands.command()
+    async def hug(self, ctx, arg=""):
+
+        if arg == "" or arg == ctx.author.mention:
+            await ctx.send("You can't hug yourself you degenerate. Well go on don't be shy, choose someone")
+        
+        else:
+            await ctx.send(embed=GifEmbedGenerator(
+                None, 
+                "{} hugs {}".format(ctx.author.mention, arg),
+                    random.choice(HUG_GIFS),
                     random.choice(LOVE_MESSAGE)
                 ))
             
