@@ -11,9 +11,11 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), 'cogs
     
 ##### Configuration and Cogs
 from config import *
+
 from cogs.admin import *
 from cogs.fun import *
 from cogs.gacha import *
+
 
 from dotenv import load_dotenv, find_dotenv
 
@@ -29,7 +31,9 @@ async def on_ready():
 
     await bot.add_cog(Admin(bot))
     await bot.add_cog(Fun(bot))
+    await bot.add_cog(Music(bot))
     await bot.add_cog(Gacha(bot))
+
 
     print(START_UP)
 
