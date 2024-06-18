@@ -86,6 +86,14 @@ LOVE_MESSAGE: list = [
     "It should've been me!!!"
 ]
 
+HATE_MESSAGE: list = [
+    "Feeling violent today aren't we?",
+    "Bro might just be the antagonist",
+    "Who made you angry today :skull:",
+    "womp womp...?",
+    "INNER PEACE!! INNER PEACE!!!!"
+]
+
 ################################# FUN COMMAND CONFIG #################################
 
 with open("gifs/kissGifs.txt", "r") as f:
@@ -100,6 +108,11 @@ with open("gifs/hugGifs.txt", "r") as f:
 f.close()
 HUG_GIFS: list = [s.strip() for s in hug]
 
+with open("gifs/shootGifs.txt", "r") as f:
+    shoot = f.readlines()
+
+f.close()
+SHOOT_GIFS: list = [s.strip() for s in shoot]
 
 def GifEmbedGenerator(title, desc, gif, mes):
     title = title

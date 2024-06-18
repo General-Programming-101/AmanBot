@@ -53,6 +53,27 @@ class Fun(commands.Cog):
                     random.choice(LOVE_MESSAGE)
                 ))
             
+
+    @commands.command()
+    async def shoot(self, ctx, arg=""):
+
+        if arg == ctx.author.mention:
+            await ctx.send("You can't hug yourself you degenerate. Well go on don't be shy, choose someone")
+        elif arg == "":
+            await ctx.send(embed=GifEmbedGenerator(
+                None, 
+                "<@1242217847099359324> shoots {}".format(ctx.author.mention, arg),
+                    random.choice(SHOOT_GIFS),
+                    random.choice(HATE_MESSAGE)
+                ))
+        else:
+            await ctx.send(embed=GifEmbedGenerator(
+                None, 
+                "{} shoots {}".format(ctx.author.mention, arg),
+                    random.choice(SHOOT_GIFS),
+                    random.choice(HATE_MESSAGE)
+                ))
+            
     @commands.command()
     async def tarot(self, ctx):
 
