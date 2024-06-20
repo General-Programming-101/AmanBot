@@ -21,7 +21,7 @@ RANDOM_HALAL: list = [
 ]
 
 ################################# HELP COMMAND CONFIG #################################
- 
+
 """
     Help Command Configs
     ############################## NOTE ##############################
@@ -154,7 +154,7 @@ def TarotEmbed(card, cardDesc, cardNo):
     if side == 1:
         title = "**__Reverse__ **" + title
         cardDesc = cardDesc[1]
-    
+
     else:
         cardDesc = cardDesc[0]
 
@@ -191,9 +191,9 @@ RANDOM_FOOTER_MESSAGE = [
     "Not happy with your reading? Run it again!",
     "I think your future is doomed"
 ]
-        
+
 ################################# HELP COMMAND CONFIG #################################
- 
+
 """
     Help Command Configs
     ############################## NOTE ##############################
@@ -234,7 +234,7 @@ RANDOM_FOOTER: list = [
 ]
 
 """
-    Help Command Embed Generator
+    Embed Generators
     ############################## NOTE ##############################
 
     If you're going to edit these, let me know first
@@ -244,6 +244,19 @@ OUTPUT_COMS: dict = {
     "Admin Commands" : ADMIN_COMS,
     "Fun Commands" : FUN_COMS,
 }
+
+def EmbedAPIGenerator(desc, footer):
+    # title = "Title" if title == False else title
+    desc = "Description" if desc  == False else desc
+    footer = "Footer" if footer == False else footer
+
+    embed = discord.Embed(
+        description = desc
+    )
+
+    embed.set_footer(text=footer)
+
+    return embed
 
 def CommandHelpGenerator(cName, cDescription):
 
@@ -257,7 +270,7 @@ def CommandHelpGenerator(cName, cDescription):
     return embed
 
 def HelpCategoryGenerator(cName):
-    
+
     if cName.lower() == "fun":
         embed = discord.Embed(
             title = "List of Fun Commands",
@@ -280,7 +293,7 @@ def EmbedGenerator(nameDict, embedDict): #### Returns a Discord Embed
     embed = discord.Embed(
         title = f"{nameDict}",
     )
-    
+
     [embed.add_field(name=k, value=v, inline=False) for k, v in embedDict.items()]
 
     return embed

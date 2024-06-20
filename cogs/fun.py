@@ -8,6 +8,8 @@ import random, discord
 from config import *
 from discord.ext import commands, tasks
 from itertools import cycle
+import json
+import requests
 
 #### Tarot Card Reading
 from libraries.tarot import *
@@ -38,7 +40,6 @@ class Fun(commands.Cog):
                     random.choice(LOVE_MESSAGE)
                 ))
 
-
     @commands.command()
     async def hug(self, ctx, arg=""):
 
@@ -53,7 +54,6 @@ class Fun(commands.Cog):
                     random.choice(LOVE_MESSAGE)
                 ))
             
-
     @commands.command()
     async def shoot(self, ctx, arg=""):
 
@@ -91,3 +91,25 @@ class Fun(commands.Cog):
             i = i + 1
 
         await ctx.send(random.choice(RANDOM_FOOTER_MESSAGE))
+
+    @commands.command()
+    async def inspire(self, ctx):
+
+        res = requests.get("https://zenquotes.io/api/random")
+
+        if res.status_code == 200:
+            await ctx.send("Success!")
+            # await ctx.send(res.json())
+            res = res.json()[0]
+
+            print(res["q"])
+            print(type(res["a"]))
+
+            await ctx.send(embed=EmbedAPIGenerator(f"***{res['q']}***", res["a"]))
+            # for p in res.json():
+            #     # print(type(res.json()[0]))
+            #     for p in (res.json()[0]).values():
+            #         await ctx.send(p)
+                # await ctx.send(json.loads(res))
+        else:
+            await ctx.send("Failed!")
