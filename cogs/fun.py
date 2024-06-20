@@ -22,7 +22,6 @@ class Fun(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    
     @commands.command()
     async def habibi(self, ctx):
         await ctx.send(random.choice(RANDOM_HALAL))
@@ -98,18 +97,10 @@ class Fun(commands.Cog):
         res = requests.get("https://zenquotes.io/api/random")
 
         if res.status_code == 200:
-            await ctx.send("Success!")
-            # await ctx.send(res.json())
-            res = res.json()[0]
-
-            print(res["q"])
-            print(type(res["a"]))
-
+            res = res.json()[0] ### Here is where we receive the 
             await ctx.send(embed=EmbedAPIGenerator(f"***{res['q']}***", res["a"]))
-            # for p in res.json():
-            #     # print(type(res.json()[0]))
-            #     for p in (res.json()[0]).values():
-            #         await ctx.send(p)
-                # await ctx.send(json.loads(res))
+
         else:
-            await ctx.send("Failed!")
+            await ctx.send("There seems to be some error with the API, developers have been informed")
+            channel = self.bot.get_channel(1253423525516021842)
+            await channel.send("API Error!")

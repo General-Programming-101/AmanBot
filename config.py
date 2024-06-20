@@ -1,6 +1,7 @@
 """
     Important imports
 """
+
 import discord, random, datetime, sys, os
 
 sys.path.append(os.path.abspath(os.path.join('..', 'gifs')))
@@ -66,7 +67,6 @@ def ReturnEmbed():
         output[k] = EmbedGenerator(k, v)
 
     return output
-
 
 ################################# FUN COMMANDS #################################
 
@@ -148,8 +148,6 @@ def TarotEmbed(card, cardDesc, cardNo):
 
     side = random.randint(0, 1)
     imageName = cardDesc[2]
-
-    print(side)
 
     if side == 1:
         title = "**__Reverse__ **" + title

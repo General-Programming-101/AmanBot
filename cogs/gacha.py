@@ -20,6 +20,7 @@ bot = commands.Bot(command_prefix="seb ", intents=discord.Intents.all(), descrip
 ###### CONFIGURATION FUNCTIONS
 
 def returnPlayerProfile(server, author, authorPic): 
+
     data = None
 
     try:
@@ -34,8 +35,6 @@ def returnPlayerProfile(server, author, authorPic):
 
         with open(f"servers/{server}/{author}.txt", "r") as f:
             data = f.readlines()
-    
-    print(data)
 
     output = []
 
@@ -90,8 +89,6 @@ def workWithPlayer(banner, server, author): #### No output
 
             if fiftyFifty == 0 and eventguarantee != "true":
                 eventguarantee = "true"
-    
-    print(pity)
 
     ##### Wish First
 
@@ -123,10 +120,8 @@ def workWithPlayer(banner, server, author): #### No output
 
     with open(f"servers/{server}/{author}data.txt", "w") as f:
         f.write(".".join(contents))
-
         f.close()
-    
-    print(output)
+
     outputResult = outputWish(output)
 
     if len(outputResult) == 2:
@@ -186,9 +181,7 @@ class Gacha(commands.Cog):
 
                 msg = await ctx.send(embed=embed)
 
-                print(details)
                 sleep(5)
-
 
                 await msg.edit(embed=details[1][1])
             else:
@@ -216,8 +209,6 @@ class Gacha(commands.Cog):
             msg = await ctx.send(embed=embed)
 
             sleep(5)
-
-            print(details)
 
             await msg.edit(embed=details[1][1])
         else:
