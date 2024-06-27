@@ -20,54 +20,6 @@ RANDOM_HALAL: list = [
     "Kes omak ya khara"
 ]
 
-################################# HELP COMMAND CONFIG #################################
-
-"""
-    Help Command Configs
-    ############################## NOTE ##############################
-    Please, if you're going to add a command, do it here.
-    I've already made sure that the help command will run properly, just edit it here
-"""
-
-ADMIN_COMS: dict = {
-    "help" : "Self explanatory - Sample use ```seb help```",
-    "Kick" : "Self explanatory - Sample use ```seb kick @user```",
-}
-
-FUN_COMS: dict = {
-    "Kiss" : "Kiss a user - Sample use ```seb kiss @user```"
-}
-
-"""
-    Help Command Embed Generator
-    ############################## NOTE ##############################
-
-    If you're going to edit these, let me know first
-"""
-
-OUTPUT_COMS: dict = {
-    "Admin Commands" : ADMIN_COMS,
-    "Fun Commands" : FUN_COMS,
-}
-
-def EmbedGenerator(nameDict, embedDict): #### Returns a Discord Embed
-    embed = discord.Embed(
-        title = f"{nameDict}",
-    )
-
-    [embed.add_field(name=k, value=v, inline=False) for k, v in embedDict.items()]
-
-    return embed
-
-def ReturnEmbed():
-    output = {}
-
-    for k, v in OUTPUT_COMS.items():
-        output[k] = EmbedGenerator(k, v)
-
-    return output
-
-
 ################################# FUN COMMANDS #################################
 
 RANDOM_HALAL: list = [
@@ -201,20 +153,52 @@ RANDOM_FOOTER_MESSAGE = [
     I've already made sure that the help command will run properly, just edit it here
 """
 
-AVAILABLE_CATEGORIES: list = [
-    "fun",
-    "admin"
-]
-
 ADMIN_COMS: dict = {
     "help" : "Self explanatory - Sample use ```seb help```",
     "Kick" : "Self explanatory - Sample use ```seb kick @user```",
 }
 
 FUN_COMS: dict = {
-    "Kiss" : "Kiss a user - Sample use ```seb kiss @user```",
-    "Tarot" : "Returns a Tarot card reading (Major Arcana) - Sample use ```seb tarot```",
+    "Kiss" : "Kiss a user - Sample use ```seb kiss @user```"
 }
+
+MUSIC_COMS: dict = {
+    "play" : "Plays a song - Sample use ```seb play Never gonna give you up```",
+    "pause" : "Pauses the song that is ***currently*** playing - Sample use ```seb pause```",
+    "resume" : "Resumes the song that was ***currently*** playing - Sample use ```seb resumme```",
+    "skip" : "Skips the song that is ***currently*** playing and moves to the next one in the queue ```seb skip```",
+    "queue" : "Queues the song and adds it to the queue ```seb queue Never gonna give you up```",
+    "clearq" : "Clears the queue ```seb clearq```",
+}
+
+OUTPUT_COMS: dict = {
+    "Admin Commands" : ADMIN_COMS,
+    "Fun Commands" : FUN_COMS,
+    "Music Commands" : MUSIC_COMS
+}
+
+def EmbedGenerator(nameDict, embedDict): #### Returns a Discord Embed
+    embed = discord.Embed(
+        title = f"{nameDict}",
+    )
+
+    [embed.add_field(name=k, value=v, inline=False) for k, v in embedDict.items()]
+
+    return embed
+
+def ReturnEmbed():
+    output = {}
+
+    for k, v in OUTPUT_COMS.items():
+        output[k] = EmbedGenerator(k, v)
+
+    return output
+
+AVAILABLE_CATEGORIES: list = [
+    "fun",
+    "admin",
+    "music"
+]
 
 ALL_COMMANDS: dict = {
     ##### ADMIN COMMANDS
@@ -224,6 +208,14 @@ ALL_COMMANDS: dict = {
     ##### FUN COMMANDS
     "kiss" : "Kiss a user - Sample use ```seb kiss @user```",
     "tarot" : "Returns a Tarot card reading (Major Arcana) - Sample use ```seb tarot```",
+
+    ##### MUSIC COMMANDS
+    "play" : "Plays a song - Sample use ```seb play Never gonna give you up```",
+    "pause" : "Pauses the song that is ***currently*** playing - Sample use ```seb pause```",
+    "resume" : "Resumes the song that was ***currently*** playing - Sample use ```seb resumme```",
+    "skip" : "Skips the song that is ***currently*** playing and moves to the next one in the queue ```seb skip```",
+    "queue" : "Queues the song and adds it to the queue ```seb queue Never gonna give you up```",
+    "clearq" : "Clears the queue ```seb clearq```",
 }
 
 RANDOM_FOOTER: list = [
@@ -286,6 +278,14 @@ def HelpCategoryGenerator(cName):
         )
 
         [embed.add_field(name=k, value=v, inline=False) for k, v in ADMIN_COMS.items()]
+
+    elif cName.lower() == "music":
+        embed = discord.Embed(
+            title = "List of Music Commands",
+            description = "\n\n"
+        )
+
+        [embed.add_field(name=k, value=v, inline=False) for k, v in MUSIC_COMS.items()]
 
     return embed
 
