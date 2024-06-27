@@ -1,6 +1,7 @@
 """
     Important imports
 """
+
 import discord, random, datetime, sys, os
 
 sys.path.append(os.path.abspath(os.path.join('..', 'gifs')))
@@ -100,8 +101,6 @@ def TarotEmbed(card, cardDesc, cardNo):
 
     side = random.randint(0, 1)
     imageName = cardDesc[2]
-
-    print(side)
 
     if side == 1:
         title = "**__Reverse__ **" + title
@@ -306,6 +305,7 @@ def ReturnMainHelp():
 
     embed.add_field(name="Fun", value="For laughs and giggles", inline=False)
     embed.add_field(name="Admin", value="Moderation", inline=False)
+    embed.add_field(name="Music", value="For Grooving and Moving", inline=False)
 
     embed.set_thumbnail(url="https://pbs.twimg.com/media/DAB0513WAAAIQpd.png")
 
