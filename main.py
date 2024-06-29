@@ -42,33 +42,34 @@ async def on_ready():
 async def on_message(message):
     print(f"{message.guild}/{message.channel}/{message.author.name}> Message: {message.content}")
 
-    if not os.path.exists("clipthat/{}.txt".format(message.channel.id)):
-        with open(f"clipthat/{message.channel.id}.txt", "w") as f:
-            f.close()
+    # if not os.path.exists("clipthat/{}.txt".format(message.channel.id)):
+    #     with open(f"clipthat/{message.channel.id}.txt", "w") as f:
+    #         f.close()
 
-    with open(f"clipthat/{message.channel.id}.txt", "r") as f:
-        contents = f.readlines()
+    # with open(f"clipthat/{message.channel.id}.txt", "r") as f:
+    #     contents = f.readlines()
 
-        if "\n" in contents:
-            contents.remove("\n")
+    #     if "\n" in contents:
+    #         contents.remove("\n")
     
-    if len(contents) >= 10:
-        contents = contents[1:]
+    # if len(contents) >= 10:
+    #     contents = contents[1:]
     
-    contents.append(str(message.content).strip() + "{$.^" + str(message.author.id))
+    # contents.append(str(message.content).strip() + "{$.^" + str(message.author.id))
 
-    with open(f"clipthat/{message.channel.id}.txt", "w") as f:
+    # with open(f"clipthat/{message.channel.id}.txt", "w") as f:
 
-        newContents = []
+    #     newContents = []
 
-        if "\n" in contents:
-            contents.remove("\n")
+    #     if "\n" in contents:
+    #         contents.remove("\n")
         
-        for m in contents:
-            newContents.append(m.strip())
+    #     for m in contents:
+    #         newContents.append(m.strip())
         
-        f.write("\n".join(newContents))
+        # f.write("\n".join(newContents))
 
+    print("Finished adding to the .txt file!")
 
 """
     Bot Run
