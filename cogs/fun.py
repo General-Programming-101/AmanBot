@@ -22,6 +22,24 @@ class Fun(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    @commands.command(aliases=["addquote"])
+    async def clipthat(self, ctx, member: discord.Member):
+
+        messages = {}
+
+        with open(f"clipthat/{ctx.channel.id}.txt", "r") as f:
+            contents = f.readlines()
+
+            await ctx.send(embed=ClipThatEmbed(contents, member.id))
+            await ctx.send("Sending clips!")
+        
+        print("Reached end of commands")
+        # for line in 
+
+    @commands.command()
+    async def ping(self, ctx):
+        await ctx.send("Pong")
+
     @commands.command()
     async def habibi(self, ctx):
         await ctx.send(random.choice(RANDOM_HALAL))

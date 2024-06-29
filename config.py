@@ -318,3 +318,23 @@ def ReturnEmbed():
         output[k] = EmbedGenerator(k, v)
 
     return output
+
+def ClipThatEmbed(messages, member):
+
+    output = {}
+
+    for line in messages:
+        message = line.split("{$.^")
+
+        # print(message)
+
+        if member in message:
+            output[member] = message
+
+    embed = discord.Embed(
+        title = "Clipped moments"
+    )
+
+    [embed.add_field(name=k, value=v, inline=False) for k, v in output.items()]
+
+    return embed

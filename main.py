@@ -41,7 +41,34 @@ async def on_ready():
 @bot.event
 async def on_message(message):
     print(f"{message.guild}/{message.channel}/{message.author.name}> Message: {message.content}")
-    await bot.process_commands(message)
+
+    if not os.path.exists("clipthat/{}.txt".format(message.channel.id)):
+        with open(f"clipthat/{message.channel.id}.txt", "w") as f:
+            f.close()
+
+    with open(f"clipthat/{message.channel.id}.txt", "r") as f:
+        contents = f.readlines()
+
+        if "\n" in contents:
+            contents.remove("\n")
+    
+    if len(contents) >= 10:
+        contents = contents[1:]
+    
+    contents.append(str(message.content).strip() + "{$.^" + str(message.author.id))
+
+    with open(f"clipthat/{message.channel.id}.txt", "w") as f:
+
+        newContents = []
+
+        if "\n" in contents:
+            contents.remove("\n")
+        
+        for m in contents:
+            newContents.append(m.strip())
+        
+        f.write("\n".join(newContents))
+
 
 """
     Bot Run
