@@ -22,6 +22,25 @@ class Fun(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    @commands.command(aliases=["addquote"])
+    async def clipthat(self, ctx, user: discord.Member = None):
+
+        if user is not None:
+            messages = {}
+            with open(f"clipthat/{ctx.channel.id}.txt", "r") as f:
+                contents = f.readlines()
+
+                await ctx.send(embed=ClipThatEmbed(contents, user.id))
+                await ctx.send("Sending clips!")
+            
+        else:
+            await ctx.send("Seems like you're missing a member to clip?")
+        # for line in 
+
+    @commands.command()
+    async def ping(self, ctx):
+        await ctx.send("Pong")
+
     @commands.command()
     async def habibi(self, ctx):
         await ctx.send(random.choice(RANDOM_HALAL))

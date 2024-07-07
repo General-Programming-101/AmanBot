@@ -41,6 +41,50 @@ async def on_ready():
 @bot.event
 async def on_message(message):
     print(f"{message.guild}/{message.channel}/{message.author.name}> Message: {message.content}")
+
+    if message.author.id != 1242217847099359324:
+        if not os.path.exists("clipthat/{}.txt".format(message.channel.id)):
+            with open(f"clipthat/{message.channel.id}.txt", "w") as f:
+                f.close()
+
+        with open(f"clipthat/{message.channel.id}.txt", "r") as f:
+            contents = f.readlines()
+
+            if "\n" in contents:
+                contents.remove("\n")
+
+            temp = []
+
+            for c in contents:
+                c = c.strip()
+                temp.append(c)
+            
+            contents = temp
+        if len(contents) >= 10:
+            contents = contents[1:]
+        
+        contents.append(str(message.content).strip() + "{$.^" + str(message.author.id))
+
+        with open(f"clipthat/{message.channel.id}.txt", "w") as f:
+
+            newContents = []
+
+            if "\n" in contents:
+                contents.remove("\n")
+            
+            for m in contents:
+                # print(m)
+                temp = m.split("{$.")
+
+                # print(temp)
+                
+                if "1242217847099359324" in temp or '' in temp:
+                    pass
+                else:
+                    newContents.append(m.strip())
+            
+            f.write("\n".join(newContents))
+
     await bot.process_commands(message)
 
 """
