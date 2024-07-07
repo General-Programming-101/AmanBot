@@ -22,18 +22,19 @@ class Fun(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    # @commands.command(aliases=["addquote"])
-    # async def clipthat(self, ctx, member: discord.Member):
+    @commands.command(aliases=["addquote"])
+    async def clipthat(self, ctx, user: discord.Member = None):
 
-    #     messages = {}
+        if user is not None:
+            messages = {}
+            with open(f"clipthat/{ctx.channel.id}.txt", "r") as f:
+                contents = f.readlines()
 
-    #     with open(f"clipthat/{ctx.channel.id}.txt", "r") as f:
-    #         contents = f.readlines()
-
-    #         await ctx.send(embed=ClipThatEmbed(contents, member.id))
-    #         await ctx.send("Sending clips!")
-        
-    #     print("Reached end of commands")
+                await ctx.send(embed=ClipThatEmbed(contents, user.id))
+                await ctx.send("Sending clips!")
+            
+        else:
+            await ctx.send("Seems like you're missing a member to clip?")
         # for line in 
 
     @commands.command()
